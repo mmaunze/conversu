@@ -8,7 +8,31 @@ if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
     exit(); 
 }
 $id_usuario = $_SESSION['id_usuario'];
+
+// Incluindo arquivo de conexão
+require_once '../../config/ConexaoMySQL.php';
+$conn = new ConexaoMysql();
+$conn->conectar();
+
+// Consulta para contar o número de artigos
+$sqlArtigos = "SELECT COUNT(*) AS total_artigos FROM artigo";
+$resultArtigos = $conn->query($sqlArtigos);
+$totalArtigos = $resultArtigos->fetch_assoc()['total_artigos'];
+
+// Consulta para contar o número de categorias de conteúdo
+$sqlCategorias = "SELECT COUNT(*) AS total_categorias FROM categoria";
+$resultCategorias = $conn->query($sqlCategorias);
+$totalCategorias = $resultCategorias->fetch_assoc()['total_categorias'];
+
+// Consulta para contar o número de usuários cadastrados
+$sqlUsuarios = "SELECT COUNT(*) AS total_usuarios FROM utilizador";
+$resultUsuarios = $conn->query($sqlUsuarios);
+$totalUsuarios = $resultUsuarios->fetch_assoc()['total_usuarios'];
+
+// Fechar conexão com o banco de dados
+$conn->fecharConexao();
 ?>
+
 <?php include 'template/header.php' ?>
 <?php include 'template/siderbar.php' ?>
 <div class="main-body">
@@ -41,7 +65,7 @@ $id_usuario = $_SESSION['id_usuario'];
                                 </div>
                                 <div class="col-6  text-right">
                                     <div class="counter-card-text">
-                                        <h3>23</h3>
+                                        <h3><?php echo $totalArtigos; ?></h3>
                                         <p>Artigos Publicados</p>
                                     </div>
                                 </div>
@@ -60,8 +84,8 @@ $id_usuario = $_SESSION['id_usuario'];
                                 </div>
                                 <div class="col-6 text-right">
                                     <div class="counter-card-text">
-                                        <h3>15</h3>
-                                        <p>Usuarios Cadastrados</p>
+                                        <h3><?php echo $totalUsuarios; ?></h3>
+                                        <p>Usuários Cadastrados</p>
                                     </div>
                                 </div>
                             </div>
@@ -79,14 +103,17 @@ $id_usuario = $_SESSION['id_usuario'];
                                 </div>
                                 <div class="col-6 text-right">
                                     <div class="counter-card-text">
-                                        <h3>35</h3>
-                                        <p>Categoria de Conteudo</p>
+                                        <h3><?php echo $totalCategorias; ?></h3>
+                                        <p>Categorias de Conteúdo</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- counter-card-3 end -->
+
+                <!-- counter-card-3 end -->
                 <div class="col-md-12">
                     <div class="card user-card">
                         <div class="card-block">
@@ -97,7 +124,7 @@ $id_usuario = $_SESSION['id_usuario'];
                                 <table class="table">
                                     <thead>
                                         <tr class="text-uppercase">
-                                            <th>Titulo</th>
+                                            <th>Título</th>
                                             <th>Autor</th>
                                             <th>Resumo</th>
                                             <th></th>
@@ -114,18 +141,12 @@ $id_usuario = $_SESSION['id_usuario'];
                                         $result = $conn->query($sql);
                                     
                                         if ($result->num_rows > 0) {
-                                                                                        while ($row = $result->fetch_assoc()) {
+                                            while ($row = $result->fetch_assoc()) {
                                         ?>
                                                 <tr>
-                                                    <td>
-                                                        <?php echo $row['titulo']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['autor']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['resumo']; ?>
-                                                    </td>
+                                                    <td><?php echo $row['titulo']; ?></td>
+                                                    <td><?php echo $row['autor']; ?></td>
+                                                    <td><?php echo $row['resumo']; ?></td>
                                                     <td>
                                                         <form action="editar.php" method="POST">
                                                             <input type="hidden" name="artigo" value="<?php echo $row['id']; ?>">
@@ -133,7 +154,7 @@ $id_usuario = $_SESSION['id_usuario'];
                                                         </form>
                                                     </td>
                                                     <td>
-                                                    <form action="../../forms/remover_artigo.php" method="POST">
+                                                        <form action="../../forms/remover_artigo.php" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-danger" type="submit" value="Remover Artigo">
                                                         </form>  

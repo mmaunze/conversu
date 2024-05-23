@@ -3,19 +3,17 @@
       <div class="container">
         <div class="section-title">
           <h2>Equipe</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-            in iste officiis commodi quidem hic quas.</p>
+          <p></p>
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/team/team-1.jpg" alt="">
+              <img src="assets/img/logo.png" alt="">
               <h4>Cesario Machava</h4>
               <span>Chief Executive Officer</span>
               <p>
-                Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut
-                aut
+                Cesario Machava lidera a Conversu com uma visão clara e um compromisso firme com a sustentabilidade e a inovação.
+                Com anos de experiência no setor de construção civil, ele está dedicado a transformar Moçambique através de práticas de construção verde.
               </p>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
@@ -27,11 +25,11 @@
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/team/team-2.jpg" alt="">
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
-              <p>
-                Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+              <img src="assets/img/logo.png" alt="">
+              <h4>Daina da Silva</h4>
+              <span>Chief Civil Engineering Officer (CCEO)</span>
+              <p>Daina da Silva é a nossa engenheira civil chefe, responsável por supervisionar todos os aspectos técnicos dos nossos projetos de construção. Com sua vasta experiência e atenção aos detalhes,
+                ela garante que cada projeto atenda aos mais altos padrões de qualidade e sustentabilidade.
               </p>
               <div class="social">
                 <a href="https://www.twitter.com/"><i class="bi bi-twitter"></i></a>
@@ -43,11 +41,11 @@
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/team/team-3.jpg" alt="">
-              <h4>William Anderson</h4>
+              <img src="assets/img/logo.png" alt="">
+              <h4>Chief Information Technology Officer (CITO)</h4>
               <span>CTO</span>
-              <p>
-                Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+              <p>Meldo Maunze é o chefe do departamento de ICT, garantindo que todos os sistemas e tecnologias utilizados pela Conversu sejam eficientes e de ponta.
+                Sua expertise em engenharia informática é crucial para a integração de soluções tecnológicas inovadoras em nossos projetos.
               </p>
               <div class="social">
                 <a href="https://www.twitter.com/"><i class="bi bi-twitter"></i></a>

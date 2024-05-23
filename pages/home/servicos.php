@@ -2,10 +2,13 @@
       <div class="container">
         <div class="section-title">
           <h2>Serviços</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-            in iste officiis commodi quidem hic quas.</p>
+          <p>Explore nossos serviços e descubra como estamos liderando a transformação da construção civil em Moçambique. 
+            Com soluções inovadoras e foco na sustentabilidade, oferecemos uma ampla gama de serviços para atender 
+            às necessidades de projetos de qualquer escala,
+             sempre priorizando a excelência e o respeito ao meio ambiente.</p>
         </div>
+
+        
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box iconbox-blue">
@@ -17,8 +20,9 @@
                 </svg>
                 <i class="bx bxl-dribbble"></i>
               </div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">Construções Sustentáveis</a></h4>
+              <p>Projetamos e construímos edifícios que utilizam tecnologias e materiais ecológicos, 
+                reduzindo o consumo de recursos e a emissão de poluentes.</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
@@ -32,8 +36,10 @@
                 </svg>
                 <i class="bx bx-file"></i>
               </div>
-              <h4><a href="">Sed Perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4><a href="">Consultoria Ambiental</a></h4>
+              <p>Oferecemos serviços de consultoria para ajudar outras empresas 
+                a implementarem práticas de construção sustentável.
+</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
@@ -47,8 +53,9 @@
                 </svg>
                 <i class="bx bx-tachometer"></i>
               </div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <h4><a href="">Reformas Verdes</a></h4>
+              <p>Transformamos edifícios existentes em estruturas mais eficientes e ambientalmente amigáveis.
+</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
@@ -61,8 +68,9 @@
                 </svg>
                 <i class="bx bx-layer"></i>
               </div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4><a href="">Gestão de Projetos</a></h4>
+              <p>Gerenciamos todos os aspectos do seu projeto de construção, garantindo que ele seja concluído dentro do prazo, 
+                do orçamento e dos padrões de sustentabilidade mais elevados.</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
@@ -75,8 +83,9 @@
                 </svg>
                 <i class="bx bx-slideshow"></i>
               </div>
-              <h4><a href="">Dele Cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+              <h4><a href="">Certificações de Sustentabilidade</a></h4>
+              <p>Apoiamos projetos a obterem certificações ambientais reconhecidas internacionalmente, 
+                assegurando que os edifícios atendam aos mais altos padrões de eficiência energética e sustentabilidade</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
@@ -89,8 +98,10 @@
                 </svg>
                 <i class="bx bx-arch"></i>
               </div>
-              <h4><a href="">Divera Don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+              <h4><a href="">Educação e Treinamento</a></h4>
+              <p>Oferecemos programas de capacitação para profissionais da construção civil, 
+                focados em práticas sustentáveis e tecnologias verdes, 
+                promovendo a disseminação de conhecimentos e habilidades essenciais para o futuro da construção.</p>
             </div>
           </div>
         </div>
