@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
-  
+
     $_SESSION = array();
     session_destroy();
     header("Location: ../login.php");
-    exit(); 
+    exit();
 }
 $id_usuario = $_SESSION['id_usuario'];
 
@@ -139,7 +139,7 @@ $conn->fecharConexao();
                                         // Consulta para buscar os artigos do banco de dados
                                         $sql = "SELECT * FROM artigo";
                                         $result = $conn->query($sql);
-                                    
+
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                         ?>
@@ -157,7 +157,7 @@ $conn->fecharConexao();
                                                         <form action="../../forms/remover_artigo.php" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-danger" type="submit" value="Remover Artigo">
-                                                        </form>  
+                                                        </form>
                                                     </td>
                                                     <td>
                                                         <form action="/conversu/artigo.php" method="POST">
