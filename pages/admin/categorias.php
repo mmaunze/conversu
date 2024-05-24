@@ -52,11 +52,13 @@ $conn->fecharConexao();
                     while ($row = $resultCategoriasArtigos->fetch_assoc()) {
                 ?>
                         <div class="col-md-6 col-xl-4">
-                            <div class="card counter-card-2 user-card mb-4">
+                            <div class="card counter-card-<?php echo rand(1, 3)?> user-card mb-4">
                                 <div class="card-block-big">
                                     <div class="row">
                                         <div class="col-6 counter-card-icon">
-                                            <i class="icofont icofont-chart-bar-graph"></i>
+                                            <i class="icofont <?php echo 
+                                            ["icofont-chart-bar-graph", "icofont-chart","icofont-chart-radar-graph","icofont-chart-flow-1"]
+                                [array_rand(["icofont-chart-bar-graph", "icofont-chart","icofont-chart-radar-graph","icofont-chart-flow-1"])]; ?>"></i>
                                         </div>
                                         <div class="col-6 text-right">
                                             <div class="counter-card-text">
@@ -111,9 +113,8 @@ $conn->fecharConexao();
                                                 <td><?php echo $row['slug']; ?></td>
                                                 <td><?php echo $row['id_categoria']; ?></td>
                                                 <td>
-                                                    <form action="editar" method="POST">
-                                                        <input type="hidden" name="artigo" value="<?php echo $row['id_categoria']; ?>">
-                                                        <input type="hidden" name="accao" value="editar">
+                                                    <form action="editar_categoria" method="POST">
+                                                        <input type="hidden" name="categoria" value="<?php echo $row['id_categoria']; ?>">
                                                         <input class="btn btn-outline-primary" type="submit" value="Editar Categoria">
                                                     </form>
                                                 </td>

@@ -27,7 +27,7 @@ if (isset($_POST['artigo'])) {
 ?>
     <div class="page-body">
       <div class="container">
-        <form class="content" onsubmit="return handleSubmit()" action="../../forms/editar_artigo.php" method="POST">
+        <form class="content" id="artigoFormEditar" onsubmit="return handleSubmiteEditarArtigo()" action="../../forms/editar_artigo.php" method="POST">
           <div class="form-group">
             <label class="h5" for="titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $row['titulo']; ?>" required>

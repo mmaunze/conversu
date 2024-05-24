@@ -25,7 +25,7 @@ include 'template/header.php'; ?>
     <?php unset($_SESSION['erro']);  
     ?>
   <?php endif; ?>
-    <form class="content" onsubmit="return handleSubmit()" action="../../forms/publicar_artigo.php" method="POST">
+    <form class="content" id="artigoForm" onsubmit="return handleSubmitArtigo()" action="../../forms/publicar_artigo.php" method="POST">
       <div class="form-group">
         <label class="h5" for="titulo">Titulo</label>
         <input type="text" class="form-control" name="titulo" id="titulo" required>

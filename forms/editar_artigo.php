@@ -3,6 +3,8 @@ session_start();
 
 require_once '../config/ConexaoMySQL.php';
 
+$response = array('status' => '', 'message' => '');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $titulo = $_POST['titulo'];
@@ -16,12 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resumo = htmlspecialchars($resumo);
     $categoria = htmlspecialchars($categoria);
 
-
-    // Instanciar a conexão com o banco de dados
     $conn = new ConexaoMysql();
     $conn->conectar();
 
-    // Preparar a consulta SQL para atualização
     $sql = "UPDATE artigo SET titulo = ?, autor = ?, resumo = ?, conteudo = ?, id_categoria = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
 
@@ -29,21 +28,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sisssi", $titulo, $autor, $resumo, $conteudo, $categoria, $id);
 
         if ($stmt->execute()) {
-            $_SESSION['mensagem'] = "Artigo atualizado com sucesso!";
+            $response['status'] = 'success';
+            $response['message'] = 'Artigo atualizado com sucesso!';
         } else {
-            $_SESSION['erro'] = "Erro ao atualizar artigo: " . $stmt->error;
+            $response['status'] = 'error';
+            $response['message'] = 'Erro ao atualizar artigo: ' . $stmt->error;
         }
         $stmt->close();
     } else {
-        $_SESSION['erro'] = "Erro na preparação da consulta: " . $conn->$connect_error;
+        $response['status'] = 'error';
+        $response['message'] = 'Erro na preparação da consulta: ' . $conn->$connect_error;
     }
 
     $conn->fecharConexao();
-    header("Location: {$_SERVER['HTTP_REFERER']}");
+    echo json_encode($response);
     exit();
 } else {
-    $_SESSION['erro'] = "Método de requisição inválido.";
-    header("Location: {$_SERVER['HTTP_REFERER']}");
+    $response['status'] = 'error';
+    $response['message'] = 'Método de requisição inválido.';
+    echo json_encode($response);
     exit();
 }
 ?>

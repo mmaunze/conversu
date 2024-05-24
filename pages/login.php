@@ -52,12 +52,12 @@ function login() {
     var senha = $("#senha").val();
     $.ajax({
         type: "POST",
-        url: "../forms/login.php",
+        url: "../forms/login",
         data: { email: email, senha: senha },
         success: function(response) {
             var data = JSON.parse(response);
             if (data.status === 'success') {
-                window.location.href = data.redirect; // Redirecionar para a página de login
+                window.location.href = data.redirect; 
             } else {
                 $("#resultado").html(data.message).addClass("text-danger");
             }

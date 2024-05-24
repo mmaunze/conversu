@@ -7,17 +7,17 @@
 </div>
 </div>
 </div>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/plugins/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/script.js"></script>
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/pcoded.min.js"></script>
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/demo-12.js"></script>
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/extensions/responsive/js/responsive-custom.js"></script>
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/extensions/responsive/js/dataTables.responsive.min"></script>
+<script type="text/javascript" src="assets/plugins/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script src="assets/js/pcoded.min.js"></script>
+<script src="assets/js/demo-12.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/extensions/responsive/js/responsive-custom.js"></script>
+<script src="assets/extensions/responsive/js/dataTables.responsive.min"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="dist/pell.js"></script>
@@ -32,41 +32,126 @@
         }
     });
 
-    function handleSubmitu() {
-        var conteudo = document.getElementById('conteudo').value;
-        if (!conteudo) {
-            alert('O conteúdo não pode estar vazio!');
-            return false;
-        }
+    function handleSubmiteEditarCategoria() {
+        var form = document.getElementById("categoriaFormEditar");
+        var formData = new FormData(form);
 
-        $.ajax({
-            url: '../../../forms/publicar_artigo.php',
-            type: 'POST',
-            data: $('#artigoForm').serialize(),
-            success: function(response) {
-                const res = JSON.parse(response);
-                if (res.status === 'success') {
-                    alert('Sucesso: ' + res.message);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/editar_categoria.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert(response.message);
+                        form.reset();
+
+                    } else {
+                        alert(response.message);
+                    }
                 } else {
-                    alert('Erro: ' + res.message);
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
                 }
-            },
-            error: function() {
-                alert('Ocorreu um erro ao enviar o artigo.' + error);
             }
-        });
+        };
+        xhr.send(formData);
+
         return false;
     }
-        
+
+    function handleSubmiteEditarArtigo() {
+        var form = document.getElementById("artigoFormEditar");
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/editar_artigo.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert(response.message);
+                        form.reset();
+
+                    } else {
+                        alert(response.message);
+                    }
+                } else {
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                }
+            }
+        };
+        xhr.send(formData);
+
+        return false;
+    }
+
+    function handleSubmitArtigo() {
+        var form = document.getElementById("artigoForm");
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/publicar_artigo.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert(response.message);
+                        form.reset();
+
+                    } else {
+                        alert(response.message);
+                    }
+                } else {
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                }
+            }
+        };
+        xhr.send(formData);
+
+        return false;
+    }
+
+    function handleSubmitCategoria() {
+        var form = document.getElementById("formCategoria");
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/criar_categoria", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert(response.message); // Exibir mensagem de sucesso
+                        form.reset(); // Recarregar a página após o sucesso
+                    } else {
+                        alert(response.message); // Exibir mensagem de erro
+                    }
+                } else {
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                }
+            }
+        };
+        xhr.send(formData);
+
+        return false; // Evitar o envio normal do formulário
+    }
 </script>
 <!-- custom js -->
-<script src="<?php echo dirname($_SERVER['PHP_SELF']); ?><?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/vartical-layout.min.js"></script>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?><?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/pages/dashboard/custom-dashboard.js"></script>
-<script type="text/javascript" src="<?php echo dirname($_SERVER['PHP_SELF']); ?><?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/js/script.min.js"></script>
+<script src="assets/js/vartical-layout.min.js"></script>
+<script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
+<script type="text/javascript" src="assets/js/script.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
+
     function gtag() {
         dataLayer.push(arguments);
     }
@@ -74,4 +159,5 @@
     gtag('config', 'UA-23581568-13');
 </script>
 </body>
+
 </html>

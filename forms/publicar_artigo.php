@@ -39,11 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->fecharConexao();
     echo json_encode($response);
-    exit();
+
 } else {
     $response['status'] = 'error';
     $response['message'] = 'Método de requisição inválido.';
     echo json_encode($response);
-    exit();
+    
 }
 ?>

@@ -25,7 +25,7 @@ include 'template/header.php'; ?>
     <?php unset($_SESSION['erro']);  
     ?>
   <?php endif; ?>
-    <form class="content" onsubmit="return handleSubmit()" action="../../forms/criar_categoria" method="POST">
+    <form class="content" id="formCategoria" onsubmit="return handleSubmitCategoria()" action="../../forms/criar_categoria" method="POST">
       <div class="form-group">
         <label class="h5" for="titulo">Nome da Categia</label>
         <input type="text" class="form-control" name="descricao" id="descricao" required>
