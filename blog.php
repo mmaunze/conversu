@@ -12,14 +12,20 @@
         while ($row = $result->fetch_assoc()) {
       ?>
           <div class="card swiper-slide">
+            <div class="card-titulo text-center">
+            <h2 class="name"><?php echo $row['titulo']; ?></h2>
+            </div>
+        
             <div class="image-content">
               <span class="overlay"></span>
               <div class="card-image">
                 <img src="<?php echo $row['imagem']; ?>" alt="<?php echo $row['titulo']; ?>" class="card-img" />
               </div>
+              
             </div>
-            <div class="card-content">
-              <h2 class="name"><?php echo $row['titulo']; ?></h2>
+            
+            <div class="card-resumo">
+             
               <p class="description justify-content-between"><?php echo $row['resumo']; ?></p>
             </div>
             <div class="text-center">

@@ -1494,18 +1494,37 @@ section {
   background-color: #fff;
   position: relative;
   background: #fff;
-  width: 21em;
-  max-width: 21em;
-  height: 21em;
-  max-height: 21em;
-  min-height: 21em;
-  position: relative; /* Para posicionamento do conteúdo interno */
-  overflow: hidden;
+  width: 19em;
+  max-width: 19em;
+  height: 25em;
+  max-height: 25em;
+  min-height: 25em;
+ 
   margin: 1.5em;
   box-shadow: 0 5px 25px rgba(1, 1, 1, 0.6);
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+}
+.card-titulo {
+  position: relative; /* Para posicionamento do conteúdo interno */
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 4em;
+  max-height: 4em;
+  min-height: 4em;
+
+}
+
+.card-resumo{
+  position: relative; /* Para posicionamento do conteúdo interno */
+  overflow: hidden;
+  width: 19em;
+  max-width: 19em;
+  height: 9em;
+  max-height: 6em;
+  min-height: 6em;
 }
 
 .image-content {
@@ -1528,16 +1547,16 @@ section {
   height: 100%;
   width: 100%;
   background-color: #034e39;
-  border-radius: 25px 25px 0 25px;
+  border-radius: 20px 20px 0 20px;
 }
 .overlay::before,
 .overlay::after {
   content: "";
   position: absolute;
   right: 0;
-  bottom: -40px;
-  height: 40px;
-  width: 40px;
+  bottom: -30px;
+  height: 30px;
+  width: 30px;
   background-color: #034e39;
 }
 .overlay::after {
@@ -1546,8 +1565,8 @@ section {
 }
 .card-image {
   position: relative;
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
   background: #fff;
   padding: 3px;
