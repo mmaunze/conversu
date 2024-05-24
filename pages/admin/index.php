@@ -154,7 +154,7 @@ $conn->fecharConexao();
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="../../forms/remover_artigo.php" method="POST">
+                                                        <form action="../../forms/remover_artigo.php" id="artigoFormRemover" onsubmit="return handleRemoverArtigo()" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-danger" type="submit" value="Remover Artigo">
                                                         </form>
@@ -186,4 +186,38 @@ $conn->fecharConexao();
         </div>
     </div>
 </div>
+<script>
+    function handleRemoverArtigo() {
+        var form = document.getElementById("artigoFormRemover");
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/remover_artigo.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    try {
+                        console.log(xhr.responseText); // Log the raw response for debugging
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.status === "success") {
+                            alert(response.message);
+                            window.location.reload(); // Reload the page on success
+                        } else {
+                            alert(response.message);
+                        }
+                    } catch (e) {
+                        console.error("Erro ao processar a resposta JSON: ", e);
+                        alert('Erro ao processar a resposta do servidor.');
+                    }
+                } else {
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                }
+            }
+        };
+        xhr.send(formData);
+
+        return false;
+    }
+</script>
 <?php include 'template/footer.php' ?>

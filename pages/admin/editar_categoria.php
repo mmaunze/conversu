@@ -54,4 +54,33 @@ if (isset($_POST['categoria'])) {
     echo '<p class="text-center h1"><br><br><br><strong>Nenhum artigo foi seleccionado.</strong></p><br><br><br><br><br><br><br><br>';
   }
 } ?>
+<script>
+    function handleSubmiteEditarCategoria() {
+        var form = document.getElementById("categoriaFormEditar");
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/editar_categoria.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert(response.message);
+                        form.reset();
+
+                    } else {
+                        alert(response.message);
+                    }
+                } else {
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                }
+            }
+        };
+        xhr.send(formData);
+
+        return false;
+    }
+</script>
 <?php include 'template/footer.php'; ?>

@@ -52,13 +52,12 @@ $conn->fecharConexao();
                     while ($row = $resultCategoriasArtigos->fetch_assoc()) {
                 ?>
                         <div class="col-md-6 col-xl-4">
-                            <div class="card counter-card-<?php echo rand(1, 3)?> user-card mb-4">
+                            <div class="card counter-card-<?php echo rand(1, 3) ?> user-card mb-4">
                                 <div class="card-block-big">
                                     <div class="row">
                                         <div class="col-6 counter-card-icon">
-                                            <i class="icofont <?php echo 
-                                            ["icofont-chart-bar-graph", "icofont-chart","icofont-chart-radar-graph","icofont-chart-flow-1"]
-                                [array_rand(["icofont-chart-bar-graph", "icofont-chart","icofont-chart-radar-graph","icofont-chart-flow-1"])]; ?>"></i>
+                                            <i class="icofont <?php echo
+                                                                ["icofont-chart-bar-graph", "icofont-chart", "icofont-chart-radar-graph", "icofont-chart-flow-1"][array_rand(["icofont-chart-bar-graph", "icofont-chart", "icofont-chart-radar-graph", "icofont-chart-flow-1"])]; ?>"></i>
                                         </div>
                                         <div class="col-6 text-right">
                                             <div class="counter-card-text">
@@ -78,11 +77,11 @@ $conn->fecharConexao();
                 ?>
                 <!-- Counter Cards Dinâmicos End -->
             </div>
-            <div class="row">
+            <div class="text-center justify-content-between align-center center card user-card col-md-8 mt-3">
                 <a href="criar_categoria.php" class="btn btn-outline-success">Adicionar uma nova categoria</a>
             </div>
-            <div class="row">
-                <div class="card user-card">
+            <div class="row mt-5 ">
+                <div class="card user-card col-md-12">
                     <div class="card-block">
                         <h5>Lista de Categorias de Conteudo</h5>
                     </div>
@@ -119,7 +118,7 @@ $conn->fecharConexao();
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="../../forms/remover_categoria" method="POST">
+                                                    <form action="../../forms/remover_categoria" id="categoriaFormRemover" method="POST" onsubmit="return handleRemoverCategoria()">
                                                         <input type="hidden" name="id_categoria" value="<?php echo $row['id_categoria']; ?>">
                                                         <input class="btn btn-outline-danger" type="submit" value="Remover Categoria">
                                                     </form>
@@ -147,4 +146,39 @@ $conn->fecharConexao();
         </div>
     </div>
 </div>
+<script>
+    function handleRemoverCategoria() {
+        var form = document.getElementById("categoriaFormRemover");
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../forms/remover_categoria.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    try {
+                        console.log(xhr.responseText); // Log the raw response for debugging
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.status === "success") {
+                            alert(response.message);
+                            window.location.reload(); // Reload the page on success
+                        } else {
+                            alert(response.message);
+                        }
+                    } catch (e) {
+                        console.error("Erro ao processar a resposta JSON: ", e);
+                        alert('Erro ao processar a resposta do servidor.');
+                    }
+                } else {
+                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                }
+            }
+        };
+        xhr.send(formData);
+
+        return false;
+    }
+</script>
+
 <?php include 'template/footer.php' ?>

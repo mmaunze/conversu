@@ -1,36 +1,51 @@
 <?php
-session_start(); 
-
+session_start();
 require_once '../config/ConexaoMySQL.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_categoria = $_POST['id_categoria'];
-  
-    $conn = new ConexaoMysql();
-    $conn->conectar();
-
-    $sql = "DELETE FROM categoria WHERE id_categoria = ?";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        $stmt->bind_param("i", $id_categoria);
-
-        if ($stmt->execute()) {
-            $_SESSION['mensagem'] = "Categoria removida com sucesso!";
-        } else {
-            $_SESSION['erro'] = "Erro ao remover a categoria: " . $stmt->error;
-        }
-        $stmt->close();
-    } else {
-        $_SESSION['erro'] = "Erro na preparação da consulta: " . $conn->$connect_error;
-    }
-
-    $conn->fecharConexao();
-    header("Location: {$_SERVER['HTTP_REFERER']}");
-    exit();
-} else {
-    $_SESSION['erro'] = "Método de requisição inválido.";
-    header("Location: {$_SERVER['HTTP_REFERER']}");
-    exit();
+function logError($message) {
+    error_log($message, 3, 'logfile.log');
 }
+
+$response = array('status' => '', 'message' => '');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['id_categoria'])) {
+        $id_categoria = $_POST['id_categoria'];
+      
+        $conn = new ConexaoMysql();
+        $conn->conectar();
+
+        $sql = "DELETE FROM categoria WHERE id_categoria = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("i", $id_categoria);
+
+            if ($stmt->execute()) {
+                $response['status'] = 'success';
+                $response['message'] = 'Categoria removida com sucesso!';
+            } else {
+                logError("Erro ao remover categoria: " . $stmt->error);
+                $response['status'] = 'error';
+                $response['message'] = 'Erro ao remover a categoria: ' . $stmt->error;
+            }
+            $stmt->close();
+        } else {
+            logError("Erro na preparação da consulta: " . $conn->$connect_error);
+            $response['status'] = 'error';
+            $response['message'] = 'Erro na preparação da consulta: ' . $conn->$connect_error;
+        }
+
+        $conn->fecharConexao();
+    } else {
+        $response['status'] = 'error';
+        $response['message'] = 'ID da categoria não foi fornecido.';
+    }
+} else {
+    $response['status'] = 'error';
+    $response['message'] = 'Método de requisição inválido.';
+}
+
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

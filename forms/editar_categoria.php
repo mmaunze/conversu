@@ -51,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = new ConexaoMysql();
     $conn->conectar();
 
-    // Verificar se o nome da categoria é único
     $sqlCheckNome = "SELECT COUNT(*) AS total FROM categoria WHERE descricao = ?";
     $stmtCheckNome = $conn->prepare($sqlCheckNome);
     $stmtCheckNome->bind_param("s", $descricao);

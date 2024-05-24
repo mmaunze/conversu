@@ -32,33 +32,8 @@
         }
     });
 
-    function handleSubmiteEditarCategoria() {
-        var form = document.getElementById("categoriaFormEditar");
-        var formData = new FormData(form);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/editar_categoria.php", true);
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === "success") {
-                        alert(response.message);
-                        form.reset();
-
-                    } else {
-                        alert(response.message);
-                    }
-                } else {
-                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
-                }
-            }
-        };
-        xhr.send(formData);
-
-        return false;
-    }
+  
 
     function handleSubmiteEditarArtigo() {
         var form = document.getElementById("artigoFormEditar");
@@ -116,33 +91,9 @@
         return false;
     }
 
-    function handleSubmitCategoria() {
-        var form = document.getElementById("formCategoria");
-        var formData = new FormData(form);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/criar_categoria", true);
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === "success") {
-                        alert(response.message); // Exibir mensagem de sucesso
-                        form.reset(); // Recarregar a página após o sucesso
-                    } else {
-                        alert(response.message); // Exibir mensagem de erro
-                    }
-                } else {
-                    alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
-                }
-            }
-        };
-        xhr.send(formData);
-
-        return false; // Evitar o envio normal do formulário
-    }
 </script>
+
 <!-- custom js -->
 <script src="assets/js/vartical-layout.min.js"></script>
 <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
