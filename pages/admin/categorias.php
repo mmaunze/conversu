@@ -111,21 +111,20 @@ $conn->fecharConexao();
                                                 <td><?php echo $row['slug']; ?></td>
                                                 <td><?php echo $row['id_categoria']; ?></td>
                                                 <td>
-                                                    <form action="editar.php" method="POST">
+                                                    <form action="editar" method="POST">
                                                         <input type="hidden" name="artigo" value="<?php echo $row['id_categoria']; ?>">
                                                         <input type="hidden" name="accao" value="editar">
                                                         <input class="btn btn-outline-primary" type="submit" value="Editar Categoria">
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="../../forms/remover_categoria.php" method="POST">
-                                                        <input type="hidden" name="id" value="<?php echo $row['id_categoria']; ?>">
-                                                        <input type="hidden" name="accao" value="remover">
+                                                    <form action="../../forms/remover_categoria" method="POST">
+                                                        <input type="hidden" name="id_categoria" value="<?php echo $row['id_categoria']; ?>">
                                                         <input class="btn btn-outline-danger" type="submit" value="Remover Categoria">
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="/conversu/artigo.php" method="POST">
+                                                    <form action="/conversu/artigo" method="POST">
                                                         <input type="hidden" name="artigo" value="<?php echo $row['id_categoria']; ?>">
                                                         <input class="btn btn-outline-success" type="submit" value="Ver Artigos da Categoria">
                                                     </form>

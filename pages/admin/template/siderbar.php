@@ -11,13 +11,13 @@
                                     </a>
                                 </li>
                                 <li class="pcoded-trigger">
-                                    <a href="./publicar.php">
+                                    <a href="./publicar">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Publicar Artigo</span>
                                     </a>
                                 </li>
                                 <li class="pcoded-trigger">
-                                    <a href="./categorias.php">
+                                    <a href="./categorias">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Gerir Categorias</span>
                                     </a>
@@ -29,7 +29,7 @@
                                     </a>
                                 </li>
                                 <li class="pcoded-trigger">
-                                    <a href="sair.php?sair">
+                                    <a href="sair?sair">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Terminar Sessao</span>
                                     </a>

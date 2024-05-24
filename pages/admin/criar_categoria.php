@@ -4,7 +4,7 @@ if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
   
     $_SESSION = array();
     session_destroy();
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit(); 
 }
 $id_usuario = $_SESSION['id_usuario'];
@@ -25,7 +25,7 @@ include 'template/header.php'; ?>
     <?php unset($_SESSION['erro']);  
     ?>
   <?php endif; ?>
-    <form class="content" onsubmit="return handleSubmit()" action="../../forms/criar_categoria.php" method="POST">
+    <form class="content" onsubmit="return handleSubmit()" action="../../forms/criar_categoria" method="POST">
       <div class="form-group">
         <label class="h5" for="titulo">Nome da Categia</label>
         <input type="text" class="form-control" name="descricao" id="descricao" required>

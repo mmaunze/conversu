@@ -8,14 +8,14 @@
 		<meta name="author" content="Conversu">
         <!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
-		<link rel="stylesheet" type="text/css" href="pages/404/css/style.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/css/style.css">
 	</head>
 	<body class="flat">
         <!-- Canvas for particles animation -->
         <div id="particles-js"></div>
         <!-- Your logo on the top left -->
         <a href="#" class="logo-link" title="back home">
-            <img src="../../assets/img/" class="logo" alt="conversu">
+            <img src="/assets/img/" class="logo" alt="conversu">
         </a>
         <div class="content">
             <div class="content-box">
@@ -49,13 +49,12 @@
     <footer class="light">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://facebook.com/conversu"><i class="fa fa-facebook"></i></a></li>
         </ul>
     </footer>
-        <script src="pages/404/js/jquery.min.js"></script>
-        <script src="pages/404/js/bootstrap.min.js"></script>
+        <script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/js/jquery.min.js"></script>
+        <script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/js/bootstrap.min.js"></script>
         <!-- Particles plugin -->
-        <script src="pages/404/js/particles.js"></script>
+        <script src="<?php echo dirname($_SERVER['PHP_SELF']); ?>/js/particles.js"></script>
     </body>
 </html>

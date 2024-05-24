@@ -23,7 +23,7 @@
               <p class="description justify-content-between"><?php echo $row['resumo']; ?></p>
             </div>
             <div class="text-center">
-            <form action="artigo.php" method="POST">
+            <form action="artigo" method="POST">
                 <input type="hidden" id="artigo" name="artigo" value="<?php echo $row['id']; ?>">
                 <input class="button" type="submit" value="Ver Artigo">
               </form>

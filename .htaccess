@@ -1,2 +1,9 @@
 Options -Indexes
 ErrorDocument 404 /conversu/pages/404/index.html
+
+#removao de extensao de arquivo na url
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
