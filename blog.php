@@ -33,7 +33,7 @@
         }
         ?>
     </div>
-    <div class="pagination"></div>z
+    <div class="pagination"></div>
   </div>
 <?php
       } else {

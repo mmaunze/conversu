@@ -17,7 +17,7 @@
                                     </a>
                                 </li>
                                 <li class="pcoded-trigger">
-                                    <a href="javascript:void(0)">
+                                    <a href="./categorias.php">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Gerir Categorias</span>
                                     </a>
