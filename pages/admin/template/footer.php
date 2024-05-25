@@ -40,7 +40,7 @@
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/editar_artigo.php", true);
+        xhr.open("POST", "../../forms/editar_artigo", true);
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -68,7 +68,7 @@
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/publicar_artigo.php", true);
+        xhr.open("POST", "../../forms/publicar_artigo", true);
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {

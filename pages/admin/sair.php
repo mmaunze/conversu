@@ -7,7 +7,7 @@ if (isset($_GET['sair'])) {
     // Destruir a sessão
     session_destroy();
     // Redirecionar para a página de login ou outra página após o logout
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 ?>

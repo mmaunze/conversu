@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
   $_SESSION = array();
   session_destroy();
-  header("Location: ../login.php");
+  header("Location: ../login");
   exit();
 }
 $id_usuario = $_SESSION['id_usuario'];
@@ -24,7 +24,7 @@ if (isset($_POST['categoria'])) {
 ?>
     <div class="page-body">
       <div class="container">
-        <form class="content" id="categoriaFormEditar" onsubmit="return handleSubmiteEditarCategoria()" action="../../forms/editar_categoria.php" method="POST">
+        <form class="content" id="categoriaFormEditar" onsubmit="return handleSubmiteEditarCategoria()" action="../../forms/editar_categoria" method="POST">
           <div class="form-group">
             <label class="h5" for="descricao">Nome do Artigo</label>
             <input type="text" class="form-control" name="descricao" id="descricao" value="<?php echo $row['descricao']; ?>" required>
@@ -60,7 +60,7 @@ if (isset($_POST['categoria'])) {
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/editar_categoria.php", true);
+        xhr.open("POST", "../../forms/editar_categoria", true);
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {

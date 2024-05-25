@@ -54,10 +54,10 @@ include 'template/header.php'; ?>
                 if (xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);
                     if (response.status === "success") {
-                        alert(response.message); // Exibir mensagem de sucesso
-                        form.reset(); // Recarregar a página após o sucesso
+                        alert(response.message);
+                        form.reset();
                     } else {
-                        alert(response.message); // Exibir mensagem de erro
+                        alert(response.message); 
                     }
                 } else {
                     alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
@@ -66,7 +66,7 @@ include 'template/header.php'; ?>
         };
         xhr.send(formData);
 
-        return false; // Evitar o envio normal do formulário
+        return false;
     }
 </script>
 <?php include 'template/footer.php' ?>

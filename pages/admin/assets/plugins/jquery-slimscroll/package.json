@@ -20,11 +20,11 @@
   "licenses" : [
     {
       "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
+      "url": "http://www.opensource.org/licenses/mit-license
     },
     {
       "type": "GPL",
-      "url": "http://www.opensource.org/licenses/gpl-license.php"
+      "url": "http://www.opensource.org/licenses/gpl-license
     }
   ]
 }

@@ -3,17 +3,17 @@ session_start();
 if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
     $_SESSION = array();
     session_destroy();
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 $id_usuario = $_SESSION['id_usuario'];
 
-// Incluindo arquivo de conexão
+
 require_once '../../config/ConexaoMySQL.php';
 $conn = new ConexaoMysql();
 $conn->conectar();
 
-// Consulta para contar o número de artigos por categoria
+
 $sqlCategoriasArtigos = "
     SELECT c.descricao, COUNT(a.id) AS total_artigos
     FROM categoria c
@@ -21,7 +21,7 @@ $sqlCategoriasArtigos = "
     GROUP BY c.descricao";
 $resultCategoriasArtigos = $conn->query($sqlCategoriasArtigos);
 
-// Fechar conexão com o banco de dados
+
 $conn->fecharConexao();
 ?>
 
@@ -46,7 +46,7 @@ $conn->fecharConexao();
         </div>
         <div class="page-body">
             <div class="row">
-                <!-- Counter Cards Dinâmicos para Categorias e Artigos -->
+        
                 <?php
                 if ($resultCategoriasArtigos->num_rows > 0) {
                     while ($row = $resultCategoriasArtigos->fetch_assoc()) {
@@ -75,10 +75,10 @@ $conn->fecharConexao();
                     echo "<p class=\"text-center h1\"><strong>Não há categorias disponíveis.</strong></p>";
                 }
                 ?>
-                <!-- Counter Cards Dinâmicos End -->
+        
             </div>
             <div class="text-center justify-content-between align-center center card user-card col-md-8 mt-3">
-                <a href="criar_categoria.php" class="btn btn-outline-success">Adicionar uma nova categoria</a>
+                <a href="criar_categoria" class="btn btn-outline-success">Adicionar uma nova categoria</a>
             </div>
             <div class="row mt-5 ">
                 <div class="card user-card col-md-12">
@@ -152,17 +152,17 @@ $conn->fecharConexao();
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/remover_categoria.php", true);
+        xhr.open("POST", "../../forms/remover_categoria", true);
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     try {
-                        console.log(xhr.responseText); // Log the raw response for debugging
+                        console.log(xhr.responseText); 
                         var response = JSON.parse(xhr.responseText);
                         if (response.status === "success") {
                             alert(response.message);
-                            window.location.reload(); // Reload the page on success
+                            window.location.reload();
                         } else {
                             alert(response.message);
                         }

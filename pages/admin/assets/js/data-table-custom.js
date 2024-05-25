@@ -118,7 +118,7 @@ $(document).ready(function() {
     $('#dt-server-processing').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": "dt-json-data/scripts/server-processing.php",
+        "ajax": "dt-json-data/scripts/server-processing,
         "columns": [
             { "data": "first_name" },
             { "data": "last_name" },
@@ -133,7 +133,7 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
         "ajax": {
-            url: "dt-json-data/scripts/server-processing.php",
+            url: "dt-json-data/scripts/server-processing,
             data: function(d) {
                 d.myKey = "myValue";
                 // d.custom = $('#myInput').val();
@@ -154,7 +154,7 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
         "ajax": {
-            url: "dt-json-data/scripts/post.php",
+            url: "dt-json-data/scripts/post,
             type: "post"
         },
         "columns": [
@@ -289,7 +289,7 @@ $(document).ready(function() {
     $('#server-table').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": "dt-json-data/server-table.php"
+        "ajax": "dt-json-data/server-table
     });
     // Server side script table end
     // Data source table js end

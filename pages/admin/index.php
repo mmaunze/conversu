@@ -4,7 +4,7 @@ if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
 
     $_SESSION = array();
     session_destroy();
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 $id_usuario = $_SESSION['id_usuario'];
@@ -148,19 +148,19 @@ $conn->fecharConexao();
                                                     <td><?php echo $row['autor']; ?></td>
                                                     <td><?php echo $row['resumo']; ?></td>
                                                     <td>
-                                                        <form action="editar.php" method="POST">
+                                                        <form action="editar" method="POST">
                                                             <input type="hidden" name="artigo" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-primary" type="submit" value="Editar Artigo">
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="../../forms/remover_artigo.php" id="artigoFormRemover" onsubmit="return handleRemoverArtigo()" method="POST">
+                                                        <form action="../../forms/remover_artigo" id="artigoFormRemover" onsubmit="return handleRemoverArtigo()" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-danger" type="submit" value="Remover Artigo">
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="/conversu/artigo.php" method="POST">
+                                                        <form action="/conversu/artigo" method="POST">
                                                             <input type="hidden" name="artigo" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-success" type="submit" value="Ver Artigo">
                                                         </form>
@@ -192,17 +192,17 @@ $conn->fecharConexao();
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/remover_artigo.php", true);
+        xhr.open("POST", "../../forms/remover_artigo", true);
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     try {
-                        console.log(xhr.responseText); // Log the raw response for debugging
+                        console.log(xhr.responseText); 
                         var response = JSON.parse(xhr.responseText);
                         if (response.status === "success") {
                             alert(response.message);
-                            window.location.reload(); // Reload the page on success
+                            window.location.reload(); 
                         } else {
                             alert(response.message);
                         }

@@ -9,10 +9,8 @@ function logError($message)
 
 function gerarSlug($descricao, $conn)
 {
-    // Remove caracteres especiais e espaços
     $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($descricao));
 
-    // Verifica se o slug gerado é único
     $sql = "SELECT COUNT(*) AS total FROM categoria WHERE slug = ?";
     $stmt = $conn->prepare($sql);
     $uniqueSlug = $slug;

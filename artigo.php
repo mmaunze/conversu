@@ -21,7 +21,7 @@ if (isset($_POST['artigo'])) {
           <div class="d-flex justify-content-between align-items-center">
             <ol>
               <li><a href="/">Home</a></li>
-              <li> <a href="artigos.php">Artigos</a></li>
+              <li> <a href="artigos">Artigos</a></li>
               <li> <?php echo $row['titulo'] ?> </li>
             </ol>
           </div>
@@ -69,7 +69,7 @@ if (isset($_POST['artigo'])) {
                       </div>
                       <div class="card-content">
                         <h2 class="name"><?php echo $row_relacionados['titulo']; ?></h2>
-                        <form action="artigo.php" method="POST">
+                        <form action="artigo" method="POST">
                           <input type="hidden" id="artigo" name="artigo" value="<?php echo $row_relacionados['id']; ?>">
                           <input class="button" type="submit" value="Ver Artigo">
                         </form>

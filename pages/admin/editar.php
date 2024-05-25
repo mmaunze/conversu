@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
   $_SESSION = array();
   session_destroy();
-  header("Location: ../login.php");
+  header("Location: ../login");
   exit();
 }
 $id_usuario = $_SESSION['id_usuario'];
@@ -27,7 +27,7 @@ if (isset($_POST['artigo'])) {
 ?>
     <div class="page-body">
       <div class="container">
-        <form class="content" id="artigoFormEditar" onsubmit="return handleSubmiteEditarArtigo()" action="../../forms/editar_artigo.php" method="POST">
+        <form class="content" id="artigoFormEditar" onsubmit="return handleSubmiteEditarArtigo()" action="../../forms/editar_artigo" method="POST">
           <div class="form-group">
             <label class="h5" for="titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $row['titulo']; ?>" required>

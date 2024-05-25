@@ -4,7 +4,7 @@ if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
   
     $_SESSION = array();
     session_destroy();
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit(); 
 }
 $id_usuario = $_SESSION['id_usuario'];
@@ -25,7 +25,7 @@ include 'template/header.php'; ?>
     <?php unset($_SESSION['erro']);  
     ?>
   <?php endif; ?>
-    <form class="content" id="artigoForm" onsubmit="return handleSubmitArtigo()" action="../../forms/publicar_artigo.php" method="POST">
+    <form class="content" id="artigoForm" onsubmit="return handleSubmitArtigo()" action="../../forms/publicar_artigo" method="POST">
       <div class="form-group">
         <label class="h5" for="titulo">Titulo</label>
         <input type="text" class="form-control" name="titulo" id="titulo" required>
@@ -48,7 +48,7 @@ include 'template/header.php'; ?>
           } else {
             echo "<strong>Não há categorias disponíveis.</strong>";
           }
-          // Fechar conexão com o banco de dados
+      
           $conn->fecharConexao();
           ?>
         </select>
