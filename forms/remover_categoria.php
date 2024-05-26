@@ -2,7 +2,8 @@
 session_start();
 require_once '../config/ConexaoMySQL.php';
 
-function logError($message) {
+function logError($message)
+{
     error_log($message, 3, 'logfile.log');
 }
 
@@ -11,7 +12,7 @@ $response = array('status' => '', 'message' => '');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['id_categoria'])) {
         $id_categoria = $_POST['id_categoria'];
-      
+
         $conn = new ConexaoMysql();
         $conn->conectar();
 
@@ -48,4 +49,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 header('Content-Type: application/json');
 echo json_encode($response);
-?>

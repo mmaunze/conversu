@@ -2,40 +2,42 @@
 session_start();
 require_once '../config/ConexaoMySQL.php';
 
-function logError($message) {
+function logError($message)
+{
     error_log($message, 3, 'logfile.log');
 }
 
-function gerarSlug($descricao, $conn) {
+function gerarSlug($descricao, $conn)
+{
     // Remove caracteres especiais e espaços
     $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($descricao));
-    
+
     // Verifica se o slug gerado é único
     $sql = "SELECT COUNT(*) AS total FROM categoria WHERE slug = ?";
     $stmt = $conn->prepare($sql);
     $uniqueSlug = $slug;
     $i = 1;
-    
+
     if ($stmt) {
         while (true) {
             $stmt->bind_param("s", $uniqueSlug);
             $stmt->execute();
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
-            
+
             if ($row['total'] == 0) {
                 break;
             }
-            
+
             $uniqueSlug = $slug . '-' . $i;
             $i++;
         }
-        
+
         $stmt->close();
     } else {
         logError("Erro na preparação da consulta de slug: " . $conn->connect_error);
     }
-    
+
     return $uniqueSlug;
 }
 
@@ -55,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmtCheckNome->execute();
     $resultCheckNome = $stmtCheckNome->get_result();
     $rowCheckNome = $resultCheckNome->fetch_assoc();
-    
+
     if ($rowCheckNome['total'] > 0) {
         $response['status'] = 'error';
         $response['message'] = 'Nome da categoria já existe. Escolha um nome diferente.';
@@ -92,4 +94,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response['message'] = 'Método de requisição inválido.';
     echo json_encode($response);
 }
-?>

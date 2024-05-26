@@ -33,7 +33,7 @@
     });
 
 
-  
+
 
     function handleSubmiteEditarArtigo() {
         var form = document.getElementById("artigoFormEditar");
@@ -90,8 +90,6 @@
 
         return false;
     }
-
-
 </script>
 
 <!-- custom js -->

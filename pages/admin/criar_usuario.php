@@ -9,26 +9,8 @@ if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
 }
 $id_usuario = $_SESSION['id_usuario'];
 
-// Incluindo arquivo de conexão
-require_once '../../config/ConexaoMySQL.php';
-$conn = new ConexaoMysql();
-$conn->conectar();
-
-// Verificar se o ID do usuário existe no banco de dados
-$sqlVerificaUsuario = "SELECT id FROM utilizador WHERE id = ?";
-$stmt = $conn->prepare($sqlVerificaUsuario);
-$stmt->bind_param("i", $id_usuario);
-$stmt->execute();
-$resultVerificaUsuario = $stmt->get_result();
-
-if ($resultVerificaUsuario->num_rows === 0) {
-  $_SESSION = array();
-  session_destroy();
-  header("Location: ../login");
-  exit();
-}
-$conn->fecharConexao();
 ?>
+
 <?php
 include 'template/header.php'; ?>
 <?php include 'template/siderbar.php' ?>
@@ -45,29 +27,48 @@ include 'template/header.php'; ?>
       <?php unset($_SESSION['erro']);
       ?>
     <?php endif; ?>
-    <form class="content" id="formCategoria" onsubmit="return handleSubmitCategoria()" action="../../forms/criar_categoria" method="POST">
+    <form class="content" id="formUsuario" onsubmit="return handleSubmitUsuario()" action="../../forms/criar_usuario" method="POST">
       <div class="form-group">
-        <label class="h5" for="titulo">Nome da Categia</label>
-        <input type="text" class="form-control" name="descricao" id="descricao" required>
-        <input type="hidden" name="autor" value="<?php echo $id_usuario ?>" id="autor">
+        <label class="h5" for="nome">Nome Completo</label>
+        <input type="text" class="form-control" name="nome" id="nome" required>
       </div>
+      <div class="form-group">
+        <label class="h5" for="email">Email</label>
+        <input type="text" class="form-control" name="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label class="h5" for="id_tipo_utilizador">Tipo de utilizador</label>
+        <select name="id_tipo_utilizador" id="id_tipo_utilizador" class="form-control">
+          <?php
+          require_once '../../config/ConexaoMySQL.php';
+          $conn = new ConexaoMysql();
+          $conn->conectar();
+          $sql = "SELECT * FROM tipo_utilizador where descricao <> 'Administrador'";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+          ?>
+              <option value="<?php echo $row['id_tipo_utilizador']; ?>"><?php echo $row['descricao']; ?></option>
+          <?php }
+          } else {
+            echo "<strong>Não há tipos de utilizadores disponíveis.</strong>";
+          }
 
-      <div class="form-group">
-        <label class="h5" for="resumo">Assuntos Da Categoria</label>
-        <textarea class="form-control" name="assunto" id="assunto" required></textarea>
+          $conn->fecharConexao();
+          ?>
+        </select>
       </div>
-      <input type="hidden" name="conteudo" id="conteudo">
-      <button type="submit" class="btn btn-success left-0">Criar Categoia</button>
+      <button type="submit" class="btn btn-success left-0">Cadastrar utilizador</button>
     </form>
   </div>
 </div>
 <script>
-  function handleSubmitCategoria() {
-    var form = document.getElementById("formCategoria");
+  function handleSubmitUsuario() {
+    var form = document.getElementById("formUsuario");
     var formData = new FormData(form);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../forms/criar_categoria", true);
+    xhr.open("POST", "../../forms/criar_usuario", true);
     xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {

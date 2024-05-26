@@ -13,12 +13,26 @@ require_once '../../config/ConexaoMySQL.php';
 $conn = new ConexaoMysql();
 $conn->conectar();
 
+// Verificar se o ID do usuário existe no banco de dados
+$sqlVerificaUsuario = "SELECT id FROM utilizador WHERE id = ?";
+$stmt = $conn->prepare($sqlVerificaUsuario);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$resultVerificaUsuario = $stmt->get_result();
+
+if ($resultVerificaUsuario->num_rows === 0) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../login");
+    exit();
+}
+
 
 $sqlCategoriasArtigos = "
-    SELECT c.descricao, COUNT(a.id) AS total_artigos
-    FROM categoria c
-    LEFT JOIN artigo a ON c.id_categoria = a.id_categoria
-    GROUP BY c.descricao";
+    SELECT tu.descricao, COUNT(u.id) AS total_usuarios
+    FROM tipo_utilizador tu
+    LEFT JOIN utilizador u ON tu.id_tipo_utilizador = u.id_tipo_utilizador
+    GROUP BY tu.descricao";
 $resultCategoriasArtigos = $conn->query($sqlCategoriasArtigos);
 
 
@@ -31,7 +45,7 @@ $conn->fecharConexao();
     <div class="page-wrapper">
         <div class="page-header">
             <div class="page-header-title">
-                <h4>Categorias</h4>
+                <h4>Utilizadores</h4>
             </div>
             <div class="page-header-breadcrumb">
                 <ul class="breadcrumb-title">
@@ -40,7 +54,7 @@ $conn->fecharConexao();
                             <i class="icofont icofont-home"></i>
                         </a>
                     </li>
-                    <li class="breadcrumb-item"><span>Home/Artigos/Categorias</span></li>
+                    <li class="breadcrumb-item"><span>Home/Usuarios</span></li>
                 </ul>
             </div>
         </div>
@@ -61,7 +75,7 @@ $conn->fecharConexao();
                                         </div>
                                         <div class="col-6 text-right">
                                             <div class="counter-card-text">
-                                                <h3><?php echo $row['total_artigos']; ?></h3>
+                                                <h3><?php echo $row['total_usuarios']; ?></h3>
                                                 <p><?php echo $row['descricao']; ?></p>
                                             </div>
                                         </div>
@@ -78,12 +92,12 @@ $conn->fecharConexao();
 
             </div>
             <div class="text-center justify-content-between align-center center card user-card col-md-8 mt-3">
-                <a href="criar_categoria" class="btn btn-outline-success">Adicionar uma nova categoria</a>
+                <a href="criar_usuario" class="btn btn-outline-success">Adicionar um novo usuario</a>
             </div>
             <div class="row mt-5 ">
                 <div class="card user-card col-md-12">
                     <div class="card-block">
-                        <h5>Lista de Categorias de Conteudo</h5>
+                        <h5>Lista Utilizadores</h5>
                     </div>
                     <div class="card-block product-table p-t-35">
                         <div class="table-responsive">
@@ -91,8 +105,8 @@ $conn->fecharConexao();
                                 <thead>
                                     <tr class="text-uppercase">
                                         <th>Nome</th>
-                                        <th>Slug</th>
-                                        <th>Artigos</th>
+                                        <th>Username</th>
+                                        <th>Tipo de Utilizador</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -102,33 +116,30 @@ $conn->fecharConexao();
                                     require_once '../../config/ConexaoMySQL.php';
                                     $conn = new ConexaoMysql();
                                     $conn->conectar();
-                                    $sql = "SELECT * FROM categoria";
+                                    $sql = "SELECT u.nome, u.username, tu.descricao, u.id
+                                     FROM utilizador u, tipo_utilizador tu
+                                     where tu.id_tipo_utilizador = u.id_tipo_utilizador";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
                                     ?>
                                             <tr>
+                                                <td><?php echo $row['nome']; ?></td>
+                                                <td><?php echo $row['username']; ?></td>
                                                 <td><?php echo $row['descricao']; ?></td>
-                                                <td><?php echo $row['slug']; ?></td>
-                                                <td><?php echo $row['id_categoria']; ?></td>
                                                 <td>
-                                                    <form action="editar_categoria" method="POST">
-                                                        <input type="hidden" name="categoria" value="<?php echo $row['id_categoria']; ?>">
-                                                        <input class="btn btn-outline-primary" type="submit" value="Editar Categoria">
+                                                    <form action="editar_usuario" method="POST">
+                                                        <input type="hidden" name="categoria" value="<?php echo $row['id']; ?>">
+                                                        <input class="btn btn-outline-primary" type="submit" value="Editar Usuario">
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="../../forms/remover_categoria" id="categoriaFormRemover" method="POST" onsubmit="return handleRemoverCategoria()">
-                                                        <input type="hidden" name="id_categoria" value="<?php echo $row['id_categoria']; ?>">
-                                                        <input class="btn btn-outline-danger" type="submit" value="Remover Categoria">
+                                                    <form action="../../forms/remover_usuario" id="usuarioFormRemover" method="POST" onsubmit="return handleRemoverUsuario()">
+                                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                                        <input class="btn btn-outline-danger" type="submit" value="Remover Usuario">
                                                     </form>
                                                 </td>
-                                                <td>
-                                                    <form action="/conversu/artigo" method="POST">
-                                                        <input type="hidden" name="artigo" value="<?php echo $row['id_categoria']; ?>">
-                                                        <input class="btn btn-outline-success" type="submit" value="Ver Artigos da Categoria">
-                                                    </form>
-                                                </td>
+
                                             </tr>
                                     <?php
                                         }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="PT">
+
 <head>
     <title>Conversu </title>
     <meta charset="utf-8">
@@ -12,10 +13,10 @@
     <link href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/css/style.css">
-    
-    
-        <!-- Required Fremwork -->
-        <link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/plugins/bootstrap/dist/css/bootstrap.min.css">
+
+
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/plugins/bootstrap/dist/css/bootstrap.min.css">
     <!-- themify-icons line icon -->
     <link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/icon/themify-icons/themify-icons.css">
     <!-- ico font -->
@@ -23,16 +24,17 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/css/style.css">
     <link rel="stylesheet" href="dist/pell.css">
-        <!-- Data Table Css -->
+    <!-- Data Table Css -->
     <link rel="stylesheet" type="text/css" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/assets/css/responsive.bootstrap4.min.css">
     <!-- Style.css -->
 </head>
+
 <body>
     <!-- Pre-loader end -->
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
-        <nav class="navbar header-navbar pcoded-header">
+            <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
                     <div class="navbar-logo" navbar-theme="theme4">
                         <a class="mobile-menu" id="mobile-collapse" href="javascript:void(0)">
@@ -50,12 +52,11 @@
                                     <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a>
                                     </div>
                                 </li>
-                           
-                                
+
+
                             </ul>
-                           
+
                         </div>
                     </div>
                 </div>
             </nav>
-            

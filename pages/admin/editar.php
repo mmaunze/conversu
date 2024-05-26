@@ -15,6 +15,23 @@ if (isset($_POST['artigo'])) {
   require_once '../../config/ConexaoMySQL.php';
   $conn = new ConexaoMysql();
   $conn->conectar();
+
+  // Verificar se o ID do usuário existe no banco de dados
+  $sqlVerificaUsuario = "SELECT id FROM utilizador WHERE id = ?";
+  $stmt = $conn->prepare($sqlVerificaUsuario);
+  $stmt->bind_param("i", $id_usuario);
+  $stmt->execute();
+  $resultVerificaUsuario = $stmt->get_result();
+
+  if ($resultVerificaUsuario->num_rows === 0) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../login");
+    exit();
+  }
+
+
+
   $id_artigo = $_REQUEST['artigo'];
   $sql = "SELECT artigo.*, categoria.descricao AS categoria_descricao 
           FROM artigo 
@@ -73,9 +90,10 @@ if (isset($_POST['artigo'])) {
             defaultParagraphSeparator: 'p',
             styleWithCSS: true,
             actions: ['bold', 'italic', 'underline', 'strikethrough', 'heading1', 'heading2', 'olist', 'ulist', 'paragraph', 'quote', 'code', 'line', 'link', 'image']
-         
+
           });
           editor.content.innerHTML = `<?php echo addslashes($row['conteudo']); ?>`;
+
           function handleSubmit() {
             document.getElementById('conteudo').value = editor.content.innerHTML;
             return true;

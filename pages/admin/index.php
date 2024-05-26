@@ -7,12 +7,27 @@ if (!isset($_SESSION['id_usuario']) || empty($_SESSION['id_usuario'])) {
     header("Location: ../login");
     exit();
 }
+
 $id_usuario = $_SESSION['id_usuario'];
 
 // Incluindo arquivo de conexão
 require_once '../../config/ConexaoMySQL.php';
 $conn = new ConexaoMysql();
 $conn->conectar();
+
+// Verificar se o ID do usuário existe no banco de dados
+$sqlVerificaUsuario = "SELECT id FROM utilizador WHERE id = ?";
+$stmt = $conn->prepare($sqlVerificaUsuario);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$resultVerificaUsuario = $stmt->get_result();
+
+if ($resultVerificaUsuario->num_rows === 0) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../login");
+    exit();
+}
 
 // Consulta para contar o número de artigos
 $sqlArtigos = "SELECT COUNT(*) AS total_artigos FROM artigo";
@@ -198,11 +213,11 @@ $conn->fecharConexao();
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     try {
-                        console.log(xhr.responseText); 
+                        console.log(xhr.responseText);
                         var response = JSON.parse(xhr.responseText);
                         if (response.status === "success") {
                             alert(response.message);
-                            window.location.reload(); 
+                            window.location.reload();
                         } else {
                             alert(response.message);
                         }
