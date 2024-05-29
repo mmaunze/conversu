@@ -1,5 +1,6 @@
 Options -Indexes
-ErrorDocument 404 /conversu/pages/404/index.html
+ErrorDocument 404 /conversu/pages/404/index.php
+ErrorDocument 500 /conversu/pages/404/index.php
 
 #removao de extensao de arquivo na url
 
