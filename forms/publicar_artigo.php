@@ -15,14 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resumo = htmlspecialchars($_POST['resumo']);
     $conteudo = $_POST['conteudo'];
     $categoria = htmlspecialchars($_POST['categoria']);
+    $imagem = $_POST['imagem'];
 
     $conn = new ConexaoMysql();
     $conn->conectar();
-    $sql = "INSERT INTO artigo (titulo, autor, resumo, conteudo, id_categoria) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO artigo (titulo, autor, resumo, conteudo, id_categoria, imagem) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("sissi", $titulo, $autor, $resumo, $conteudo, $categoria);
+        $stmt->bind_param("sissis", $titulo, $autor, $resumo, $conteudo, $categoria, $imagem);
         if ($stmt->execute()) {
             $response['status'] = 'success';
             $response['message'] = 'Artigo submetido com sucesso!';

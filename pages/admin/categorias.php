@@ -21,6 +21,24 @@ $sqlCategoriasArtigos = "
     GROUP BY c.descricao";
 $resultCategoriasArtigos = $conn->query($sqlCategoriasArtigos);
 
+$query_tu = "SELECT tu.descricao 
+FROM tipo_utilizador tu, utilizador u 
+WHERE u.id_tipo_utilizador = tu.id_tipo_utilizador AND u.id = ?";
+
+$stmt_tu = $conn->prepare($query_tu);
+$stmt_tu->bind_param("i", $id_usuario);
+$stmt_tu->execute();
+$stmt_tu->bind_result($tipo_usuario);
+$stmt_tu->fetch();
+$stmt_tu->close();
+
+if (!(($tipo_usuario == "Administrador") || ($tipo_usuario == "Moderador" ))) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../login");
+    exit();
+}
+
 
 $conn->fecharConexao();
 ?>
@@ -117,12 +135,14 @@ $conn->fecharConexao();
                                                         <input class="btn btn-outline-primary" type="submit" value="Editar Categoria">
                                                     </form>
                                                 </td>
+                                                <?php if($tipo_usuario == 'Administrador'){ ?>
                                                 <td>
                                                     <form action="../../forms/remover_categoria" id="categoriaFormRemover" method="POST" onsubmit="return handleRemoverCategoria()">
                                                         <input type="hidden" name="id_categoria" value="<?php echo $row['id_categoria']; ?>">
                                                         <input class="btn btn-outline-danger" type="submit" value="Remover Categoria">
                                                     </form>
                                                 </td>
+                                                <?php } ?>
                                                 <td>
                                                     <form action="/conversu/artigo" method="POST">
                                                         <input type="hidden" name="artigo" value="<?php echo $row['id_categoria']; ?>">

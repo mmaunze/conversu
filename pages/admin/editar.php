@@ -30,7 +30,24 @@ if (isset($_POST['artigo'])) {
     exit();
   }
 
-
+  $query_tu = "SELECT tu.descricao 
+  FROM tipo_utilizador tu, utilizador u 
+  WHERE u.id_tipo_utilizador = tu.id_tipo_utilizador AND u.id = ?";
+  
+  $stmt_tu = $conn->prepare($query_tu);
+  $stmt_tu->bind_param("i", $id_usuario);
+  $stmt_tu->execute();
+  $stmt_tu->bind_result($tipo_usuario);
+  $stmt_tu->fetch();
+  $stmt_tu->close();
+  
+  if (!(($tipo_usuario == "Administrador") || ($tipo_usuario == "Moderador" ))) {
+      $_SESSION = array();
+      session_destroy();
+      header("Location: ../login");
+      exit();
+  }
+  
 
   $id_artigo = $_REQUEST['artigo'];
   $sql = "SELECT artigo.*, categoria.descricao AS categoria_descricao 
@@ -50,6 +67,10 @@ if (isset($_POST['artigo'])) {
             <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $row['titulo']; ?>" required>
             <input type="hidden" name="autor" value="<?php echo $id_usuario ?>" id="autor">
             <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+          </div>
+          <div class="form-group">
+            <label class="h5" for="titulo">Fotografia</label>
+            <input type="text" class="form-control" name="imagem" id="imagem" value="<?php echo $row['imagem']; ?>" required>
           </div>
           <div class="form-group">
             <label class="h5" for="categoria">Categoria</label>

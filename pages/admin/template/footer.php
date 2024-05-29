@@ -36,7 +36,7 @@
 
 
     function handleSubmiteEditarArtigo() {
-        var form = document.getElementById("artigoFormEditar");
+        var form = document.getElementById("");
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();

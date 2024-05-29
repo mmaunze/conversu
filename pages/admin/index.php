@@ -168,12 +168,14 @@ $conn->fecharConexao();
                                                             <input class="btn btn-outline-primary" type="submit" value="Editar Artigo">
                                                         </form>
                                                     </td>
+                                                    <?php if($tipo_usuario == 'Administrador'){ ?>
                                                     <td>
                                                         <form action="../../forms/remover_artigo" id="artigoFormRemover" onsubmit="return handleRemoverArtigo()" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                                             <input class="btn btn-outline-danger" type="submit" value="Remover Artigo">
                                                         </form>
                                                     </td>
+                                                    <?php } ?>
                                                     <td>
                                                         <form action="/conversu/artigo" method="POST">
                                                             <input type="hidden" name="artigo" value="<?php echo $row['id']; ?>">

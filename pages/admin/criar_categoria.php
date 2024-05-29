@@ -27,6 +27,27 @@ if ($resultVerificaUsuario->num_rows === 0) {
   header("Location: ../login");
   exit();
 }
+
+
+$query_tu = "SELECT tu.descricao 
+FROM tipo_utilizador tu, utilizador u 
+WHERE u.id_tipo_utilizador = tu.id_tipo_utilizador AND u.id = ?";
+
+$stmt_tu = $conn->prepare($query_tu);
+$stmt_tu->bind_param("i", $id_usuario);
+$stmt_tu->execute();
+$stmt_tu->bind_result($tipo_usuario);
+$stmt_tu->fetch();
+$stmt_tu->close();
+
+if (!(($tipo_usuario == "Administrador") || ($tipo_usuario == "Moderador" ))) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../login");
+    exit();
+}
+
+
 $conn->fecharConexao();
 ?>
 <?php

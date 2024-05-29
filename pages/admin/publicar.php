@@ -54,6 +54,10 @@ include 'template/header.php'; ?>
         <input type="hidden" name="autor" value="<?php echo $id_usuario ?>" id="autor">
       </div>
       <div class="form-group">
+        <label class="h5" for="imagem">Fotografia</label>
+        <input type="text" class="form-control" name="imagem" id="imagem" required>
+      </div>
+      <div class="form-group">
         <label class="h5" for="titulo">Categoria</label>
         <select name="categoria" id="categoria" class="form-control">
           <?php

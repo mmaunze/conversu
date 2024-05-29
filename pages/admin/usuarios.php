@@ -35,6 +35,24 @@ $sqlCategoriasArtigos = "
     GROUP BY tu.descricao";
 $resultCategoriasArtigos = $conn->query($sqlCategoriasArtigos);
 
+$query_tu = "SELECT tu.descricao 
+FROM tipo_utilizador tu, utilizador u 
+WHERE u.id_tipo_utilizador = tu.id_tipo_utilizador AND u.id = ?";
+
+$stmt_tu = $conn->prepare($query_tu);
+$stmt_tu->bind_param("i", $id_usuario);
+$stmt_tu->execute();
+$stmt_tu->bind_result($tipo_usuario);
+$stmt_tu->fetch();
+$stmt_tu->close();
+
+if (!(($tipo_usuario == "Administrador") || ($tipo_usuario == "Moderador" ))) {
+    $_SESSION = array();
+    session_destroy();
+    header("Location: ../login");
+    exit();
+}
+
 
 $conn->fecharConexao();
 ?>
@@ -105,7 +123,7 @@ $conn->fecharConexao();
                                 <thead>
                                     <tr class="text-uppercase">
                                         <th>Nome</th>
-                                        <th>Username</th>
+                                        <th>Email</th>
                                         <th>Tipo de Utilizador</th>
                                         <th></th>
                                         <th></th>
@@ -116,7 +134,7 @@ $conn->fecharConexao();
                                     require_once '../../config/ConexaoMySQL.php';
                                     $conn = new ConexaoMysql();
                                     $conn->conectar();
-                                    $sql = "SELECT u.nome, u.username, tu.descricao, u.id
+                                    $sql = "SELECT u.nome, u.email, tu.descricao, u.id
                                      FROM utilizador u, tipo_utilizador tu
                                      where tu.id_tipo_utilizador = u.id_tipo_utilizador";
                                     $result = $conn->query($sql);
@@ -125,7 +143,7 @@ $conn->fecharConexao();
                                     ?>
                                             <tr>
                                                 <td><?php echo $row['nome']; ?></td>
-                                                <td><?php echo $row['username']; ?></td>
+                                                <td><?php echo $row['email']; ?></td>
                                                 <td><?php echo $row['descricao']; ?></td>
                                                 <td>
                                                     <form action="editar_usuario" method="POST">
@@ -133,13 +151,14 @@ $conn->fecharConexao();
                                                         <input class="btn btn-outline-primary" type="submit" value="Editar Usuario">
                                                     </form>
                                                 </td>
+                                                <?php if($tipo_usuario == 'Administrador'){ ?>
                                                 <td>
                                                     <form action="../../forms/remover_usuario" id="usuarioFormRemover" method="POST" onsubmit="return handleRemoverUsuario()">
                                                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                                         <input class="btn btn-outline-danger" type="submit" value="Remover Usuario">
                                                     </form>
                                                 </td>
-
+                                                <?php } ?>
                                             </tr>
                                     <?php
                                         }
@@ -158,12 +177,12 @@ $conn->fecharConexao();
     </div>
 </div>
 <script>
-    function handleRemoverCategoria() {
-        var form = document.getElementById("categoriaFormRemover");
+    function handleRemoverUsuario() {
+        var form = document.getElementById("usuarioFormRemover");
         var formData = new FormData(form);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../forms/remover_categoria", true);
+        xhr.open("POST", "../../forms/remover_usuario", true);
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
