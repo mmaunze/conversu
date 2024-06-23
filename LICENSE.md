@@ -1,6 +1,7 @@
 # Licença do Website Conversu - Construções Verdes e Sustentáveis
 
-Este projeto é licenciado pela Conversu - Construções Verdes e Sustentáveis e por Meldo Leonardo Maúnze. Todos os direitos reservados.
+Este projeto é licenciado pela Conversu - Construções Verdes e Sustentáveis e por Meldo Leonardo Maúnze.
+ Todos os direitos reservados.
 
 ## 1. Concessão de Licença
 
@@ -52,8 +53,8 @@ Para mais informações sobre a licença deste projeto ou para obter permissões
 
 - Meldo Leonardo Maunze
   - GitHub: [github.com/mmaunze](https://github.com/mmaunze)
-  - Email: exemplo@email.com
+  - Email: mlmaunze@gmail.com
 
 ---
 
-Este documento `LICENSE.md` estabelece os termos detalhados sob os quais o website da Conversu - Construções Verdes e Sustentáveis é disponibilizado para uso, modificações e distribuição. Ele inclui informações sobre concessões de licença, restrições, responsabilidade, uso de marca registrada, disposições gerais e informações de contato do autor para consultas adicionais.
+Este documento estabelece os termos detalhados sob os quais o website da Conversu - Construções Verdes e Sustentáveis é disponibilizado para uso, modificações e distribuição. Ele inclui informações sobre concessões de licença, restrições, responsabilidade, uso de marca registrada, disposições gerais e informações de contato do autor para consultas adicionais.
