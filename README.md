@@ -30,7 +30,7 @@ Ser pioneiros na construção de ambientes que harmonizam o ser humano e a natur
 ## Estrutura do Projeto
 
 O site da Conversu foi desenvolvido utilizando:
-- **Frontend:** HTML puro, CSS e JavaScript
+- **Frontend:** HTML, CSS e JavaScript
 - **Backend:** PHP
 - **Tecnologias adicionais:** AJAX, jQuery
 
@@ -41,9 +41,9 @@ O site da Conversu foi desenvolvido utilizando:
 
 ### Estrutura de Pastas
 - `/assets/img/` - Contém as imagens utilizadas no site.
-- `/sobre/` - Sobre a conversu.
+- `/admin/` - Diretório da área administrativa (não pública).
 - `/blog/` - Contém os posts do blog.
-- `/portfolio/` - Projetos e detalhes dos serviços oferecidos. a clientes
+- `/portfolio/` - Projetos e detalhes dos serviços oferecidos.
 
 ## Capturas de Tela
 
@@ -58,7 +58,12 @@ O site da Conversu foi desenvolvido utilizando:
 
 ## Licença
 
-Este projeto está licenciado sob a **Licença Pública Geral GNU (GNU GPLv3)**. Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
+Este projeto está licenciado sob a **Licença Pública Geral GNU (GNU GPLv3)**, com a seguinte observação:
+
+- **Gratuito para fins não comerciais:** O código pode ser utilizado livremente para projetos não comerciais, respeitando os termos da licença.
+- **Uso comercial:** Para qualquer uso comercial do software, é necessário obter uma licença específica. Para solicitar uma licença comercial, entre em contacto com [info@conversu.co.mz](mailto:info@conversu.co.mz).
+
+Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
 
 ## Contribuição
 
