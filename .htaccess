@@ -1,0 +1,23 @@
+# Proibir listagem de diretórios
+Options -Indexes
+
+# Páginas de erro personalizadas
+ErrorDocument 403 /pages/403/index.php
+ErrorDocument 404 /pages/404/index.php
+ErrorDocument 500 /pages/500/index.php
+
+# Remoção de extensão de arquivo na URL
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+# Bloquear acesso direto a todos os arquivos na pasta config
+<Directory "/config">
+    <FilesMatch ".*">
+        Order Deny,Allow
+        Deny from all
+        Allow from env=REDIRECT_STATUS
+    </FilesMatch>
+</Directory>
