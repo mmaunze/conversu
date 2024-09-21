@@ -48,13 +48,16 @@ O site da Conversu foi desenvolvido utilizando:
 ## Capturas de Tela
 
 1. **Página Inicial**
+
    ![Home Page](demo/home.png)
    
 2. **Blog**
-   ![Blog](#)
+
+   ![Blog](demo/blog.png)
    
 3. **Painel de Administração**
-   ![Painel Admin - Editor WYSIWYG](demo/aemin.png)
+
+   ![Painel Admin - Editor WYSIWYG](demo/admin.png)
 
 ## Licença
 
