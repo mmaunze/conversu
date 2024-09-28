@@ -92,7 +92,13 @@ $connection->fecharConexao();
             <input type="hidden" name="conteudo" id="conteudo">
             <button type="submit" class="btn btn-success left-0">Publicar Artigo</button>
         </form>
+        <div class="preview-area">
+    <h4>Pré-visualização do Conteúdo</h4>
+    <div id="preview-conteudo-editor">O conteúdo aparecerá aqui...</div>
     </div>
+    
+</div>
+
 </div>
 <?php include 'template/footer.php'; ?>
 
@@ -103,6 +109,8 @@ $connection->fecharConexao();
         defaultParagraphSeparator: 'p',
         onChange: function(html) {
             document.getElementById('conteudo').value = html; // Atualiza o campo escondido
+            document.getElementById('preview-conteudo-editor').innerHTML = html || 'O conteúdo aparecerá aqui...'; // Atualiza a pré-visualização
+
         }
     });
 

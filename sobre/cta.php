@@ -63,7 +63,7 @@
         <ul>
           <li><a href="/">Página  Inicial </a></li>
 
-          <li class="dropdown"><a href="#"><span>Sobre</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a><span>Sobre</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/sobre/">Quem Somos</a></li>
               <li><a href="/sobre/cta">CTA</a></li>
@@ -116,11 +116,10 @@
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="/assets/img/logo.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="/assets/img/team/cesario.jpg" class="img-fluid" alt="Cesario Nachava"></div>
               <div class="member-info">
                 <h4>Cesario Machava</h4>
                 <span>Chief Executive Officer</span>
-                <p>Explicabo voluptatem mollitia et repellat</p>
                 <div class="social">
                   <a href="https://x.com/mlmaunze"><i class="ri-twitter-fill"></i></a>
                   <a href="https://www.facebook.com/mmaunze"><i class="ri-facebook-fill"></i></a>
@@ -133,11 +132,10 @@
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="/assets/img/logo.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="/assets/img/team/meldo.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Meldo Maunze</h4>
                 <span>CTO</span>
-                <p>Quisquam facilis cum velit laborum corrupti</p>
                 <div class="social">
                   <a href="https://x.com/mlmaunze"><i class="ri-twitter-fill"></i></a>
                   <a href="https://www.facebook.com/mmaunze"><i class="ri-facebook-fill"></i></a>

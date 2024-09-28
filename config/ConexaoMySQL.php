@@ -3,10 +3,10 @@ class ConexaoMysql
 {
     private $host = 'localhost';
     //   private $usuario ='root'; 
-    private $usuario = 'root';
+    private $usuario = 'u555788673_super_admin';
     //  private $senha = 'Pa$$w0rd';
-    private $senha = 'Pa$$w0rd';
-    private $db = 'conversu';
+    private $senha = 'Maunze@Conversu@Meld0';
+    private $db = 'u555788673_conversu';
     private $conexao;
 
 

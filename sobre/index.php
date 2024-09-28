@@ -197,7 +197,7 @@
   
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="/assets/img/logo.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="/assets/img/team/cesario.jpg" class="img-fluid" alt="Cesario Machava"></div>
               <div class="member-info">
                 <h4>Cesário Machava</h4>
                 <span>Chief Executive Officer</span>
@@ -215,16 +215,16 @@
   
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="/assets/img/logo.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="/assets/img/team/meldo.jpg" class="img-fluid" alt="Meldo Maunze"></div>
               <div class="member-info">
                 <h4>Meldo Maúnze</h4>
                 <span>CTO</span>
                 <p></p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""><i class="ri-linkedin-box-fill"></i></a>
+                  <a href="https://x.com/mlmaunze"><i class="ri-twitter-fill"></i></a>
+                  <a href="https://facebook.com/mmaunze"><i class="ri-facebook-fill"></i></a>
+                  <a href="https://instagram.com/m.maunze"><i class="ri-instagram-fill"></i></a>
+                  <a href="https://linkedin.com/in/mmaunze"><i class="ri-linkedin-box-fill"></i></a>
                 </div>
               </div>
             </div>

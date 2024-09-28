@@ -4,9 +4,9 @@ if (isset($_GET['titulo'])) {
 
     // Configuração da conexão com o banco de dados
     $servername = "localhost";
-    $username = "root";
-    $password = 'Pa$$w0rd';
-    $dbname = "conversu";
+    $username = "u555788673_super_admin";
+    $password = "Maunze@Conversu@Meld0";
+    $dbname = "u555788673_conversu";
 
     // Criar conexão
     $conn = new mysqli($servername, $username, $password, $dbname);

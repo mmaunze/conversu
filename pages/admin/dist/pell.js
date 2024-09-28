@@ -68,19 +68,35 @@
       }
     },
     heading1: {
-      icon: '<b>H<sub>1</sub></b>',
+      icon: '<b>H<sub>H1</sub></b>',
       title: 'Heading 1',
       result: function result() {
         return exec(formatBlock, '<h1>');
       }
     },
     heading2: {
-      icon: '<b>H<sub>2</sub></b>',
+      icon: '<b>H<sub>H2</sub></b>',
       title: 'Heading 2',
       result: function result() {
         return exec(formatBlock, '<h2>');
       }
     },
+    heading3: {
+      icon: '<b>H<sub>H3</sub></b>',
+      title: 'Heading 3',
+      result: function result() {
+        return exec(formatBlock, '<h3>');
+      }
+    },
+    
+    heading4: {
+      icon: '<b>H<sub>h4</sub></b>',
+      title: 'Heading 4',
+      result: function result() {
+        return exec(formatBlock, '<h4>');
+      }
+    },
+    
     paragraph: {
       icon: '&#182;',
       title: 'Paragraph',
